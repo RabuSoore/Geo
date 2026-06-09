@@ -3,484 +3,371 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kisi-Kisi Geografi — Panduan Belajar</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
+<title>Kisi-Kisi Geografi</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
   :root {
-    --sand:    #F7F3EE;
-    --ink:     #1C1C1C;
-    --muted:   #6B6460;
-    --line:    #E4DDD6;
-
-    /* theme palettes */
-    --litosfer-bg:   #1E3A2F;
-    --litosfer-mid:  #2D5542;
-    --litosfer-acc:  #6FCF97;
-
-    --vulkan-bg:     #3B1A1A;
-    --vulkan-mid:    #6B2A2A;
-    --vulkan-acc:    #FF8A65;
-
-    --atmosfer-bg:   #162844;
-    --atmosfer-mid:  #1F4080;
-    --atmosfer-acc:  #56CCF2;
-
-    --hidrosfer-bg:  #0D2B45;
-    --hidrosfer-mid: #1565A0;
-    --hidrosfer-acc: #4FC3F7;
+    --earth: #2D4A3E;
+    --sky: #4A7C9B;
+    --lava: #C0392B;
+    --sand: #F5F0E8;
+    --stone: #8B7355;
+    --fog: #E8E4DC;
+    --ink: #1A1A1A;
+    --water: #2980B9;
+    --cloud: #ECF0F1;
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     background: var(--sand);
     color: var(--ink);
     min-height: 100vh;
   }
 
-  /* ── SIDEBAR ─────────────────────────────────────── */
-  #sidebar {
+  /* NAV */
+  #nav-panel {
     position: fixed;
     left: 0; top: 0; bottom: 0;
-    width: 272px;
-    background: #141414;
+    width: 260px;
+    background: var(--earth);
+    color: white;
     overflow-y: auto;
     z-index: 100;
     display: flex;
     flex-direction: column;
-    transition: transform .3s ease;
+    transition: transform 0.3s;
   }
 
-  #sidebar::-webkit-scrollbar { width: 3px; }
-  #sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 2px; }
-
-  .sidebar-logo {
-    padding: 22px 20px 16px;
-    border-bottom: 1px solid rgba(255,255,255,.07);
-  }
-  .sidebar-logo span {
-    font-size: .72rem;
-    font-weight: 700;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: #666;
-    display: block;
-    margin-bottom: 4px;
-  }
-  .sidebar-logo h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: #fff;
-    font-weight: 700;
-  }
-
-  .section-label {
-    padding: 16px 20px 6px;
-    font-size: .62rem;
-    font-weight: 700;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: #555;
+  #nav-panel h2 {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 20px 18px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    letter-spacing: 0.03em;
+    color: #a8d5bc;
   }
 
   .nav-item {
-    padding: 9px 20px;
+    padding: 10px 18px;
     cursor: pointer;
-    font-size: .76rem;
-    color: #aaa;
-    transition: all .15s;
-    border-left: 2px solid transparent;
+    font-size: 0.78rem;
     line-height: 1.4;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.15s;
     display: flex;
-    align-items: flex-start;
     gap: 10px;
+    align-items: flex-start;
   }
-  .nav-item:hover { color: #fff; background: rgba(255,255,255,.04); }
-  .nav-item.active { color: #fff; border-left-color: currentColor; background: rgba(255,255,255,.06); }
-  .nav-item.active.t-litosfer  { border-left-color: var(--litosfer-acc);  color: var(--litosfer-acc); }
-  .nav-item.active.t-vulkan    { border-left-color: var(--vulkan-acc);    color: var(--vulkan-acc); }
-  .nav-item.active.t-atmosfer  { border-left-color: var(--atmosfer-acc);  color: var(--atmosfer-acc); }
-  .nav-item.active.t-hidrosfer { border-left-color: var(--hidrosfer-acc); color: var(--hidrosfer-acc); }
+
+  .nav-item:hover { background: rgba(255,255,255,0.1); }
+  .nav-item.active { background: var(--lava); }
 
   .nav-num {
-    min-width: 18px;
-    font-size: .65rem;
+    font-size: 0.68rem;
     font-weight: 700;
-    opacity: .45;
+    color: #a8d5bc;
+    min-width: 22px;
     margin-top: 1px;
   }
-  .nav-item.active .nav-num { opacity: .7; }
 
-  /* ── MAIN ────────────────────────────────────────── */
+  .nav-item.active .nav-num { color: #fff; }
+
+  /* MAIN */
   #main {
-    margin-left: 272px;
+    margin-left: 260px;
     min-height: 100vh;
   }
 
-  /* ── PAGE ────────────────────────────────────────── */
-  .page { display: none; animation: fadeUp .35s ease; }
+  /* PAGE */
+  .page {
+    display: none;
+    min-height: 100vh;
+    padding: 0;
+    animation: fadeIn 0.3s ease;
+  }
   .page.active { display: block; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── HERO BANNER ─────────────────────────────────── */
-  .hero {
+  /* PAGE HEADER */
+  .page-header {
+    padding: 48px 52px 36px;
     position: relative;
-    height: 320px;
     overflow: hidden;
   }
 
-  .hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: brightness(.55) saturate(1.1);
-    transition: transform 8s ease;
-  }
-  .page.active .hero-img { transform: scale(1.04); }
-
-  .hero-overlay {
+  .page-header::before {
+    content: '';
     position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.2) 60%, transparent 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 28px 40px;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    opacity: 0.06;
+    background: white;
   }
 
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: .65rem;
+  .topic-num {
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: .12em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.7);
-    background: rgba(255,255,255,.12);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255,255,255,.15);
-    border-radius: 999px;
-    padding: 5px 12px;
+    opacity: 0.75;
     margin-bottom: 10px;
-    width: fit-content;
   }
 
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
+  .page-header h1 {
+    font-family: 'Lora', serif;
     font-size: 2rem;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.2;
-    margin-bottom: 8px;
-    text-shadow: 0 2px 12px rgba(0,0,0,.4);
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 12px;
   }
 
-  .hero p {
-    font-size: .85rem;
-    color: rgba(255,255,255,.75);
-    max-width: 520px;
+  .page-header p.subtitle {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    max-width: 560px;
     line-height: 1.6;
   }
 
-  /* ── CONTENT AREA ────────────────────────────────── */
+  /* CONTENT AREA */
   .page-content {
-    padding: 32px 40px 56px;
-    max-width: 900px;
+    padding: 36px 52px 60px;
+    max-width: 860px;
   }
 
-  /* ── PHOTO STRIP ─────────────────────────────────── */
-  .photo-strip {
-    display: grid;
-    gap: 10px;
-    margin-bottom: 28px;
-    border-radius: 14px;
-    overflow: hidden;
-  }
-  .photo-strip.cols-2 { grid-template-columns: 1fr 1fr; }
-  .photo-strip.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-
-  .photo-strip img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    display: block;
-    transition: transform .4s ease;
-  }
-  .photo-strip img:hover { transform: scale(1.03); }
-
-  .photo-box {
-    overflow: hidden;
-    border-radius: 10px;
-    position: relative;
-  }
-  .photo-box figcaption {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,.7));
-    color: rgba(255,255,255,.85);
-    font-size: .68rem;
-    font-weight: 500;
-    padding: 18px 10px 8px;
-    line-height: 1.3;
-  }
-
-  /* ── CARD ────────────────────────────────────────── */
+  /* CARD */
   .card {
-    background: #fff;
-    border-radius: 14px;
-    padding: 22px 26px;
-    margin-bottom: 18px;
-    box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 20px rgba(0,0,0,.04);
-    border: 1px solid var(--line);
+    background: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--stone);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   }
 
   .card h3 {
-    font-size: .92rem;
+    font-size: 1rem;
     font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 14px;
+    margin-bottom: 12px;
+    color: var(--earth);
     display: flex;
     align-items: center;
     gap: 8px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--line);
   }
+
+  .card h3 .icon { font-size: 1.1rem; }
 
   .card p {
-    font-size: .84rem;
+    font-size: 0.88rem;
     line-height: 1.75;
-    color: #444;
+    color: #333;
     margin-bottom: 8px;
   }
+
   .card p:last-child { margin-bottom: 0; }
 
-  /* accent left border by theme */
-  .page.theme-litosfer  .card { border-left: 3px solid var(--litosfer-acc); }
-  .page.theme-vulkan    .card { border-left: 3px solid var(--vulkan-acc); }
-  .page.theme-atmosfer  .card { border-left: 3px solid var(--atmosfer-acc); }
-  .page.theme-hidrosfer .card { border-left: 3px solid var(--hidrosfer-acc); }
-
-  /* ── TABLE ───────────────────────────────────────── */
+  /* TABLE */
   .compare-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: .82rem;
-    margin-top: 2px;
-    border-radius: 8px;
-    overflow: hidden;
+    font-size: 0.84rem;
+    margin-top: 4px;
   }
 
   .compare-table th {
-    background: var(--ink);
-    color: #fff;
+    background: var(--earth);
+    color: white;
     padding: 10px 14px;
     text-align: left;
     font-weight: 600;
-    font-size: .78rem;
-    letter-spacing: .03em;
   }
 
   .compare-table td {
     padding: 9px 14px;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--fog);
     vertical-align: top;
-    line-height: 1.6;
-    color: #333;
+    line-height: 1.55;
   }
 
   .compare-table tr:last-child td { border-bottom: none; }
-  .compare-table tr:nth-child(even) td { background: #fafaf8; }
+  .compare-table tr:nth-child(even) td { background: #fafafa; }
 
-  /* ── PILLS ───────────────────────────────────────── */
-  .pill-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 8px; }
+  /* PILL LIST */
+  .pill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
 
   .pill {
-    background: var(--sand);
-    border: 1px solid var(--line);
+    background: var(--fog);
     border-radius: 999px;
-    padding: 5px 13px;
-    font-size: .76rem;
-    font-weight: 600;
-    color: #444;
+    padding: 5px 14px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--earth);
+    border: 1px solid #ddd;
   }
 
-  .pill.red   { background: #FEF0ED; color: #C0392B; border-color: #f5c0b8; }
-  .pill.blue  { background: #EBF5FB; color: #1A6FA8; border-color: #b8d4e8; }
-  .pill.green { background: #EAFAF1; color: #1D6A45; border-color: #a0d9b5; }
-  .pill.amber { background: #FEF9E7; color: #7D6608; border-color: #f0dc8a; }
+  .pill.red { background: #fde8e8; color: var(--lava); border-color: #f5c6c6; }
+  .pill.blue { background: #e3f0f8; color: var(--sky); border-color: #b8d4e8; }
+  .pill.green { background: #e3f2ec; color: var(--earth); border-color: #a8d5bc; }
 
-  /* ── DEF LIST ────────────────────────────────────── */
-  .def-list { margin-top: 4px; }
-  .def-item { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
-  .def-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-
+  /* DEFINITION LIST */
+  .def-list { margin-top: 6px; }
+  .def-item { margin-bottom: 10px; }
   .def-term {
     font-weight: 700;
-    font-size: .84rem;
-    color: var(--ink);
-    margin-bottom: 3px;
+    font-size: 0.88rem;
+    color: var(--earth);
+    margin-bottom: 2px;
   }
-
   .def-desc {
-    font-size: .81rem;
-    line-height: 1.7;
-    color: #555;
+    font-size: 0.84rem;
+    line-height: 1.65;
+    color: #444;
     padding-left: 12px;
-    border-left: 2px solid var(--line);
+    border-left: 2px solid var(--fog);
   }
 
-  /* ── TWO COL ─────────────────────────────────────── */
+  /* TWO COL */
   .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-top: 6px;
+    gap: 16px;
+    margin-top: 4px;
   }
 
   .col-box {
-    background: var(--sand);
-    border-radius: 10px;
-    padding: 15px 17px;
-    border: 1px solid var(--line);
+    background: var(--fog);
+    border-radius: 8px;
+    padding: 16px 18px;
   }
 
   .col-box h4 {
-    font-size: .76rem;
+    font-size: 0.82rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: .07em;
-    color: var(--ink);
+    letter-spacing: 0.06em;
+    color: var(--earth);
     margin-bottom: 8px;
   }
 
   .col-box ul {
-    padding-left: 15px;
-    font-size: .8rem;
-    line-height: 1.75;
-    color: #444;
+    padding-left: 16px;
+    font-size: 0.83rem;
+    line-height: 1.7;
+    color: #333;
   }
 
-  /* ── HIGHLIGHT ───────────────────────────────────── */
-  .highlight {
-    background: linear-gradient(135deg, #EBF5FB, #EAFAF1);
-    border: 1px solid #b8ddc8;
-    border-radius: 10px;
-    padding: 14px 18px;
-    margin-top: 12px;
-    font-size: .82rem;
-    line-height: 1.75;
-    color: #2a4a3b;
-  }
-
-  .highlight strong { color: #1D6A45; }
-
-  /* ── FACT BOX ────────────────────────────────────── */
-  .fact-box {
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin-bottom: 18px;
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-  }
-
-  .fact-box.orange { background: #FFF5EF; border: 1px solid #FDDCCA; }
-  .fact-box.blue   { background: #EFF7FF; border: 1px solid #C5DEFF; }
-  .fact-box.green  { background: #EFFAF4; border: 1px solid #B5E5CA; }
-  .fact-box.red    { background: #FFF0EE; border: 1px solid #FFCCC5; }
-
-  .fact-icon { font-size: 1.5rem; line-height: 1; }
-
-  .fact-body { flex: 1; }
-  .fact-body strong { display: block; font-size: .82rem; font-weight: 700; margin-bottom: 4px; color: var(--ink); }
-  .fact-body p { font-size: .8rem; line-height: 1.7; color: #444; margin: 0; }
-
-  /* ── NAV BUTTONS ─────────────────────────────────── */
+  /* NAV BUTTONS */
   .nav-buttons {
     display: flex;
-    gap: 10px;
-    padding: 0 40px 56px;
+    gap: 12px;
+    padding: 0 52px 48px;
     align-items: center;
   }
 
   .btn {
-    padding: 10px 24px;
-    border-radius: 999px;
+    padding: 10px 22px;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: .82rem;
-    font-weight: 700;
-    transition: all .15s;
-    letter-spacing: .02em;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.15s;
   }
 
   .btn-prev {
-    background: #fff;
+    background: var(--fog);
     color: var(--ink);
-    border: 1px solid var(--line);
-    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    border: 1px solid #ccc;
   }
-  .btn-prev:hover { background: var(--sand); }
+
+  .btn-prev:hover { background: #ddd; }
 
   .btn-next {
-    background: var(--ink);
-    color: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    background: var(--earth);
+    color: white;
   }
-  .btn-next:hover { background: #333; }
+
+  .btn-next:hover { background: #1e3329; }
 
   .page-counter {
+    font-size: 0.82rem;
+    color: #888;
     margin-left: auto;
-    font-size: .78rem;
-    color: var(--muted);
-    font-weight: 600;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    padding: 5px 14px;
   }
 
-  /* ── MOBILE TOGGLE ───────────────────────────────── */
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: linear-gradient(135deg, #e3f0f8, #eef6f0);
+    border: 1px solid #b8d4e8;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 12px;
+    font-size: 0.84rem;
+    line-height: 1.7;
+    color: #2a4a6b;
+  }
+
+  .highlight strong { color: var(--earth); }
+
+  /* THEME COLORS per topic group */
+  .theme-litosfer .page-header { background: linear-gradient(135deg, #2D4A3E, #3d6352); color: white; }
+  .theme-litosfer .card { border-left-color: #2D4A3E; }
+  .theme-vulkan .page-header { background: linear-gradient(135deg, #7b2d2d, #C0392B); color: white; }
+  .theme-vulkan .card { border-left-color: #C0392B; }
+  .theme-atmosfer .page-header { background: linear-gradient(135deg, #1c4e78, #4A7C9B); color: white; }
+  .theme-atmosfer .card { border-left-color: #4A7C9B; }
+  .theme-hidrosfer .page-header { background: linear-gradient(135deg, #1a5276, #2980B9); color: white; }
+  .theme-hidrosfer .card { border-left-color: #2980B9; }
+  .theme-default .page-header { background: linear-gradient(135deg, #5D4037, var(--stone)); color: white; }
+  .theme-default .card { border-left-color: var(--stone); }
+
+  /* SCROLL */
+  #nav-panel::-webkit-scrollbar { width: 4px; }
+  #nav-panel::-webkit-scrollbar-track { background: transparent; }
+  #nav-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+
+  @media (max-width: 700px) {
+    #nav-panel { transform: translateX(-260px); }
+    #nav-panel.open { transform: translateX(0); }
+    #main { margin-left: 0; }
+    .page-header { padding: 32px 24px 24px; }
+    .page-content { padding: 24px 24px 40px; }
+    .nav-buttons { padding: 0 24px 40px; }
+    .two-col { grid-template-columns: 1fr; }
+    #menu-toggle {
+      display: flex !important;
+    }
+  }
+
   #menu-toggle {
     display: none;
     position: fixed;
     top: 14px; left: 14px;
     z-index: 200;
-    background: var(--ink);
+    background: var(--earth);
     color: white;
     border: none;
-    border-radius: 10px;
-    width: 42px; height: 42px;
+    border-radius: 8px;
+    width: 40px; height: 40px;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0,0,0,.3);
-  }
-
-  @media (max-width: 768px) {
-    #sidebar { transform: translateX(-272px); }
-    #sidebar.open { transform: translateX(0); box-shadow: 4px 0 32px rgba(0,0,0,.3); }
-    #main { margin-left: 0; }
-    .hero { height: 240px; }
-    .hero-overlay { padding: 20px 22px; }
-    .hero h1 { font-size: 1.5rem; }
-    .page-content { padding: 22px 20px 44px; }
-    .nav-buttons { padding: 0 20px 40px; }
-    .two-col { grid-template-columns: 1fr; }
-    .photo-strip.cols-3 { grid-template-columns: 1fr 1fr; }
-    #menu-toggle { display: flex !important; }
   }
 </style>
 </head>
@@ -488,14 +375,13 @@
 
 <button id="menu-toggle" onclick="toggleNav()">☰</button>
 
-<nav id="sidebar">
-  <div class="sidebar-logo">
-    <span>📚 Ringkasan Ujian</span>
-    <h2>Kisi-Kisi Geografi</h2>
-  </div>
+<!-- SIDEBAR NAV -->
+<nav id="nav-panel">
+  <h2>📚 Kisi-Kisi Geografi</h2>
   <div id="nav-links"></div>
 </nav>
 
+<!-- MAIN CONTENT -->
 <main id="main">
   <div id="pages"></div>
 </main>
@@ -506,25 +392,22 @@ const topics = [
     id: 1,
     title: "Pergerakan Lempeng Bumi & Hasilnya",
     theme: "theme-litosfer",
-    tclass: "t-litosfer",
-    badge: "🪨 Litosfer",
     subtitle: "Teori tektonik lempeng, jenis pergerakan, dan dampak geologi yang dihasilkan.",
-    hero: "https://images.unsplash.com/photo-1625758093888-b7ef417fcb93?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1616400619175-5beda3a17896?w=600&q=80", cap: "Zona subduksi menghasilkan palung laut dalam" },
-      { src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80", cap: "Rift Valley di Afrika Timur — divergensi lempeng" },
-      { src: "https://images.unsplash.com/photo-1604537529428-15bcbeecfe4d?w=600&q=80", cap: "Sesar San Andreas — lempeng transform" },
-    ],
     content: `
       <div class="card">
-        <h3><span>🌐</span> Tiga Jenis Pergerakan Lempeng</h3>
+        <h3><span class="icon">🌍</span> Teori Tektonik Lempeng</h3>
+        <p>Teori lempeng tektonik menyatakan bahwa kerak bumi terdiri dari beberapa lempeng besar yang bergerak di atas lapisan astenosfer (lapisan mantel semi-cair). Pergerakan ini disebabkan oleh arus konveksi dari panas inti bumi.</p>
+        <p><strong>Lempeng utama dunia:</strong> Lempeng Pasifik, Eurasia, Amerika Utara, Amerika Selatan, Afrika, Indo-Australia, Antartika.</p>
+      </div>
+      <div class="card">
+        <h3><span class="icon">↔️</span> Jenis Pergerakan Lempeng</h3>
         <div class="def-list">
           <div class="def-item">
-            <div class="def-term">1. Konvergen (Saling Mendekat)</div>
-            <div class="def-desc">Dua lempeng bergerak saling mendekati. Menghasilkan: subduksi (lempeng samudra menunjam ke bawah lempeng benua), pembentukan pegunungan (orogeni), palung laut, gunung berapi. Contoh: Palung Jawa, Pegunungan Himalaya.</div>
+            <div class="def-term">1. Konvergen (Tumbukan)</div>
+            <div class="def-desc">Dua lempeng saling mendekat dan bertumbukan. Menghasilkan: pegunungan (mis. Himalaya), palung laut, zona subduksi, gunung berapi, gempa bumi.</div>
           </div>
           <div class="def-item">
-            <div class="def-term">2. Divergen (Saling Menjauh)</div>
+            <div class="def-term">2. Divergen (Pemisahan)</div>
             <div class="def-desc">Dua lempeng saling menjauh. Menghasilkan: pematang tengah samudra (mid-ocean ridge), pembentukan kerak bumi baru, Lembah Retakan (Rift Valley) seperti di Afrika Timur.</div>
           </div>
           <div class="def-item">
@@ -534,7 +417,7 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>🏔️</span> Hasil Pergerakan Lempeng</h3>
+        <h3><span class="icon">🏔️</span> Hasil Pergerakan Lempeng</h3>
         <div class="pill-list">
           <span class="pill">Pegunungan lipatan</span>
           <span class="pill">Palung laut</span>
@@ -545,23 +428,17 @@ const topics = [
           <span class="pill">Zona subduksi</span>
           <span class="pill">Pulau vulkanik</span>
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 2,
-    title: "Lempeng di Kawasan Indonesia",
+    title: "Lempeng yang Ada di Kawasan Indonesia",
     theme: "theme-litosfer",
-    tclass: "t-litosfer",
-    badge: "🪨 Litosfer",
-    subtitle: "Indonesia berada di pertemuan tiga lempeng utama — sangat rawan bencana geologi.",
-    hero: "https://images.unsplash.com/photo-1580139885280-7bb7379bae5e?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1510218830377-2e994ea9087d?w=600&q=80", cap: "Ring of Fire — Cincin Api Pasifik" },
-      { src: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&q=80", cap: "Gempa dan tsunami akibat tumbukan lempeng" },
-    ],
+    subtitle: "Indonesia berada di pertemuan tiga lempeng utama — menjadikannya sangat rawan bencana geologi.",
     content: `
       <div class="card">
-        <h3><span>🗺️</span> Tiga Lempeng Utama di Indonesia</h3>
+        <h3><span class="icon">🗺️</span> Tiga Lempeng Utama di Indonesia</h3>
         <div class="def-list">
           <div class="def-item">
             <div class="def-term">1. Lempeng Indo-Australia</div>
@@ -578,7 +455,7 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>⚠️</span> Dampak bagi Indonesia</h3>
+        <h3><span class="icon">⚠️</span> Dampak bagi Indonesia</h3>
         <p>Pertemuan tiga lempeng menjadikan Indonesia berada di <strong>Ring of Fire (Cincin Api Pasifik)</strong>.</p>
         <div class="pill-list">
           <span class="pill red">Sering gempa bumi</span>
@@ -587,33 +464,26 @@ const topics = [
           <span class="pill green">Tanah vulkanik subur</span>
           <span class="pill green">Sumber daya mineral kaya</span>
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 3,
     title: "Jenis Batuan dalam Kehidupan Sehari-hari",
     theme: "theme-litosfer",
-    tclass: "t-litosfer",
-    badge: "🪨 Litosfer",
     subtitle: "Batu apung, kapur, dan marmer — tergolong dalam jenis batuan apa?",
-    hero: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1564419320461-6870880221ad?w=600&q=80", cap: "Batu apung (pumice) — batuan beku" },
-      { src: "https://images.unsplash.com/photo-1617817546887-c84aa6d8c44c?w=600&q=80", cap: "Marmer — batuan metamorf" },
-      { src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80", cap: "Batu kapur — batuan sedimen" },
-    ],
     content: `
       <div class="card">
-        <h3><span>🪨</span> Tiga Jenis Batuan Utama</h3>
+        <h3><span class="icon">🪨</span> Tiga Jenis Batuan Utama</h3>
         <table class="compare-table">
           <tr><th>Jenis</th><th>Proses Pembentukan</th><th>Contoh</th></tr>
           <tr><td><strong>Batuan Beku (Igneous)</strong></td><td>Pendinginan dan pembekuan magma/lava</td><td>Granit, Basalt, <strong>Batu Apung</strong>, Obsidian</td></tr>
           <tr><td><strong>Batuan Sedimen</strong></td><td>Pengendapan & pemadatan material</td><td><strong>Batu Kapur (Gamping)</strong>, Batu Pasir, Batu Bara, Konglomerat</td></tr>
-          <tr><td><strong>Batuan Metamorf</strong></td><td>Perubahan batuan akibat panas & tekanan tinggi</td><td><strong>Marmer</strong> (dari batu kapur), Batu Sabak, Kuarsit</td></tr>
+          <tr><td><strong>Batuan Metamorf</strong></td><td>Perubahan batuan akibat panas & tekanan tinggi</td><td><strong>Marmer</strong> (dari batu kapur), Batu Sabak (dari serpih), Kuarsit</td></tr>
         </table>
       </div>
       <div class="card">
-        <h3><span>🔍</span> Penjelasan Spesifik</h3>
+        <h3><span class="icon">🔍</span> Penjelasan Spesifik</h3>
         <div class="def-list">
           <div class="def-item">
             <div class="def-term">Batu Apung → Batuan Beku</div>
@@ -628,56 +498,43 @@ const topics = [
             <div class="def-desc">Berasal dari batu kapur yang mengalami metamorfosis (tekanan dan panas tinggi jauh di dalam bumi). Teksturnya halus, mengkilap, digunakan sebagai bahan lantai dan dekorasi bangunan mewah.</div>
           </div>
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 4,
     title: "Perbedaan Antiklin & Sinklin",
     theme: "theme-litosfer",
-    tclass: "t-litosfer",
-    badge: "🪨 Litosfer",
     subtitle: "Struktur lipatan pada lapisan batuan akibat tekanan horizontal.",
-    hero: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=600&q=80", cap: "Antiklin — lapisan batuan melipat ke atas (∧)" },
-      { src: "https://images.unsplash.com/photo-1544979590-37e9b47eb705?w=600&q=80", cap: "Sinklin — lapisan batuan melipat ke bawah (∪)" },
-    ],
     content: `
       <div class="card">
-        <h3><span>🏔️</span> Antiklin vs Sinklin</h3>
+        <h3><span class="icon">🏔️</span> Antiklin vs Sinklin</h3>
         <table class="compare-table">
           <tr><th>Aspek</th><th>Antiklin</th><th>Sinklin</th></tr>
-          <tr><td>Bentuk</td><td>Lipatan ke ATAS (cembung/kubah)</td><td>Lipatan ke BAWAH (cekung/cekungan)</td></tr>
-          <tr><td>Analogi</td><td>Punggung gunung / huruf ∧</td><td>Lembah / huruf ∪</td></tr>
+          <tr><td>Bentuk</td><td>Lipatan mengarah ke ATAS (cembung/kubah)</td><td>Lipatan mengarah ke BAWAH (cekung/cekungan)</td></tr>
+          <tr><td>Analogi</td><td>Seperti punggung pegunungan / huruf ∧</td><td>Seperti lembah / huruf ∪</td></tr>
           <tr><td>Usia batuan</td><td>Batuan tertua di bagian tengah (inti)</td><td>Batuan termuda di bagian tengah (inti)</td></tr>
-          <tr><td>Potensi SDA</td><td>Perangkap minyak bumi & gas alam</td><td>Akuifer/sumber air tanah</td></tr>
+          <tr><td>Potensi SDA</td><td>Sering menjadi perangkap minyak bumi & gas alam</td><td>Dapat menjadi akuifer/sumber air tanah</td></tr>
           <tr><td>Istilah lain</td><td>Punggungan lipatan (fold ridge)</td><td>Lembah lipatan (fold valley)</td></tr>
         </table>
       </div>
       <div class="card">
-        <h3><span>📐</span> Proses Terbentuknya</h3>
+        <h3><span class="icon">📐</span> Proses Terbentuknya</h3>
         <p>Lipatan (fold) terbentuk akibat tekanan horizontal dari dalam bumi (gaya endogen). Ketika lapisan batuan yang awalnya horizontal mendapat tekanan dari dua sisi, lapisan tersebut melengkung membentuk antiklin (ke atas) dan sinklin (ke bawah) secara bergantian.</p>
         <div class="highlight">
           <strong>Ingat:</strong> Antiklin = Atas (A) = Arch. Sinklin = Sinkhole (ke bawah). Keduanya selalu berpasangan dalam satu sistem lipatan.
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 5,
     title: "Material Gunung Api",
     theme: "theme-vulkan",
-    tclass: "t-vulkan",
-    badge: "🌋 Vulkanisme",
     subtitle: "Gunung api mengeluarkan material padat, cair, dan gas saat erupsi.",
-    hero: "https://images.unsplash.com/photo-1545130770-7307a12f03a6?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", cap: "Lava mengalir dari gunung berapi aktif" },
-      { src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80", cap: "Abu vulkanik tersebar ratusan km oleh angin" },
-      { src: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&q=80", cap: "Awan panas (wedhus gembel) — sangat mematikan" },
-    ],
     content: `
       <div class="card">
-        <h3><span>🌋</span> Material Padat (Piroklastik)</h3>
+        <h3><span class="icon">🌋</span> Material Padat (Piroklastik)</h3>
         <div class="def-list">
           <div class="def-item"><div class="def-term">Abu Vulkanik</div><div class="def-desc">Partikel batuan halus berukuran &lt;2mm. Dapat tersebar ratusan kilometer oleh angin.</div></div>
           <div class="def-item"><div class="def-term">Lapili</div><div class="def-desc">Fragmen batuan berukuran 2–64mm. Berbentuk seperti kerikil kecil.</div></div>
@@ -687,7 +544,7 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>🔥</span> Material Cair</h3>
+        <h3><span class="icon">🔥</span> Material Cair</h3>
         <div class="def-list">
           <div class="def-item"><div class="def-term">Lava</div><div class="def-desc">Magma yang telah mencapai permukaan bumi. Suhunya 700–1.200°C.</div></div>
           <div class="def-item"><div class="def-term">Lahar Panas</div><div class="def-desc">Campuran material vulkanik dengan air (hujan atau danau kawah) yang mengalir di lereng gunung dalam keadaan panas.</div></div>
@@ -695,40 +552,34 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>💨</span> Material Gas (Ekshalasi)</h3>
+        <h3><span class="icon">💨</span> Material Gas (Ekshalasi)</h3>
         <div class="pill-list">
-          <span class="pill blue">H₂O (uap air) – terbanyak</span>
+          <span class="pill">H₂O (uap air) – terbanyak</span>
           <span class="pill red">CO₂ (karbon dioksida)</span>
           <span class="pill red">SO₂ (sulfur dioksida)</span>
           <span class="pill red">H₂S (hidrogen sulfida)</span>
           <span class="pill">HCl (asam klorida)</span>
           <span class="pill">N₂ (nitrogen)</span>
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 6,
-    title: "Hukum Lacka & Tipe Gunung Api",
+    title: "Hukum Lacka (Davida)",
     theme: "theme-vulkan",
-    tclass: "t-vulkan",
-    badge: "🌋 Vulkanisme",
-    subtitle: "Hukum yang menjelaskan bentuk kerucut gunung api berdasarkan viskositas lava.",
-    hero: "https://images.unsplash.com/photo-1468581264429-2548ef9eb732?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80", cap: "Stratovulkan (komposit) — lereng curam, lava kental" },
-      { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80", cap: "Shield volcano — lereng landai, lava encer" },
-    ],
+    subtitle: "Hukum yang menjelaskan tentang bentuk kerucut gunung api berdasarkan viskositas lava.",
     content: `
       <div class="card">
-        <h3><span>📏</span> Hukum Lacka / Davida</h3>
-        <p>Hukum Lacka menyatakan bahwa <strong>sudut lereng gunung api berkaitan dengan kekentalan (viskositas) magma</strong> yang dikeluarkan.</p>
+        <h3><span class="icon">📏</span> Hukum Lacka / Davida</h3>
+        <p>Hukum Lacka (atau sering disebut Hukum Davida) menyatakan bahwa <strong>sudut lereng gunung api berkaitan dengan kekentalan (viskositas) magma</strong> yang dikeluarkan.</p>
         <div class="highlight">
-          Semakin kental (viskositas tinggi) magma → lereng makin curam → bentuk stratovulkan.<br>
+          Semakin kental (viskositas tinggi) magma → lereng gunung makin curam → bentuk stratovulkan.<br>
           Semakin encer (viskositas rendah) magma → lereng landai → bentuk perisai (shield volcano).
         </div>
       </div>
       <div class="card">
-        <h3><span>🌋</span> Tipe Gunung Api Berdasarkan Bentuk</h3>
+        <h3><span class="icon">🌋</span> Tipe Gunung Api Berdasarkan Bentuk</h3>
         <table class="compare-table">
           <tr><th>Tipe</th><th>Ciri</th><th>Lava</th><th>Contoh</th></tr>
           <tr><td><strong>Strato (Komposit)</strong></td><td>Kerucut tinggi, lereng curam, berlapis-lapis</td><td>Kental, asam/intermediate</td><td>Merapi, Krakatau, Fuji</td></tr>
@@ -736,23 +587,17 @@ const topics = [
           <tr><td><strong>Maar</strong></td><td>Berbentuk danau kawah datar</td><td>Eksplosif, banyak gas</td><td>Danau Kelimutu</td></tr>
           <tr><td><strong>Cinder Cone</strong></td><td>Kecil, lereng curam, satu kawah</td><td>Fragmen piroklastik</td><td>Gunung Batur (sebagian)</td></tr>
         </table>
-      </div>`
+      </div>
+    `
   },
   {
     id: 7,
     title: "Kedalaman Gempa & Alat Ukur Gempa",
     theme: "theme-vulkan",
-    tclass: "t-vulkan",
-    badge: "🌋 Vulkanisme",
     subtitle: "Klasifikasi hiposenter, magnitudo, dan instrumen pengukur gempa bumi.",
-    hero: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1593204326935-0affe0e7dd78?w=600&q=80", cap: "Kerusakan akibat gempa bumi dangkal" },
-      { src: "https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=600&q=80", cap: "Seismograf merekam gelombang gempa bumi" },
-    ],
     content: `
       <div class="card">
-        <h3><span>📡</span> Klasifikasi Berdasarkan Kedalaman (Hiposenter)</h3>
+        <h3><span class="icon">📡</span> Klasifikasi Berdasarkan Kedalaman (Hiposenter)</h3>
         <table class="compare-table">
           <tr><th>Jenis</th><th>Kedalaman</th><th>Dampak</th></tr>
           <tr><td><strong>Gempa Dangkal</strong></td><td>&lt; 60 km</td><td>Paling merusak, getaran kuat di permukaan</td></tr>
@@ -761,7 +606,7 @@ const topics = [
         </table>
       </div>
       <div class="card">
-        <h3><span>📊</span> Istilah Penting Gempa</h3>
+        <h3><span class="icon">📊</span> Istilah Penting Gempa</h3>
         <div class="def-list">
           <div class="def-item"><div class="def-term">Hiposenter (Fokus)</div><div class="def-desc">Titik sumber gempa di dalam bumi tempat energi dilepaskan.</div></div>
           <div class="def-item"><div class="def-term">Episenter</div><div class="def-desc">Titik di permukaan bumi tepat di atas hiposenter. Area dengan kerusakan terbesar.</div></div>
@@ -770,31 +615,24 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>🔧</span> Alat Ukur Gempa</h3>
+        <h3><span class="icon">🔧</span> Alat Ukur Gempa</h3>
         <div class="def-list">
           <div class="def-item"><div class="def-term">Seismograf</div><div class="def-desc">Alat yang MEREKAM getaran gempa bumi. Menghasilkan rekaman grafik bernama seismogram.</div></div>
           <div class="def-item"><div class="def-term">Seismometer</div><div class="def-desc">Komponen sensor dari seismograf yang mendeteksi gerakan tanah.</div></div>
           <div class="def-item"><div class="def-term">Skala Richter (Magnitudo)</div><div class="def-desc">Mengukur ENERGI yang dilepaskan gempa (besarnya gempa). Skala logaritmik.</div></div>
           <div class="def-item"><div class="def-term">Skala MMI (Modified Mercalli)</div><div class="def-desc">Mengukur INTENSITAS (dampak yang dirasakan manusia dan bangunan), skala I–XII.</div></div>
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 8,
     title: "Pelapukan Batuan: Kimiawi & Organik",
     theme: "theme-litosfer",
-    tclass: "t-litosfer",
-    badge: "🪨 Litosfer",
     subtitle: "Proses penghancuran batuan oleh agen kimia dan makhluk hidup.",
-    hero: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", cap: "Pelapukan kimiawi — oksidasi membuat batu berkarat" },
-      { src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80", cap: "Pelapukan organik — akar pohon menembus batuan" },
-      { src: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f?w=600&q=80", cap: "Gua kapur — hasil pelapukan kimiawi (karbonasi)" },
-    ],
     content: `
       <div class="card">
-        <h3><span>🧪</span> Jenis-Jenis Pelapukan</h3>
+        <h3><span class="icon">🧪</span> Jenis-Jenis Pelapukan</h3>
         <div class="def-list">
           <div class="def-item">
             <div class="def-term">Pelapukan Fisika (Mekanik)</div>
@@ -811,7 +649,7 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>🔬</span> Contoh Pelapukan Kimiawi</h3>
+        <h3><span class="icon">🔬</span> Contoh Pelapukan Kimiawi</h3>
         <div class="two-col">
           <div class="col-box">
             <h4>Oksidasi</h4>
@@ -830,24 +668,17 @@ const topics = [
             </ul>
           </div>
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 9,
     title: "Sedimentasi oleh Air, Angin & Laut",
     theme: "theme-hidrosfer",
-    tclass: "t-hidrosfer",
-    badge: "💧 Hidrosfer",
     subtitle: "Proses pengendapan material dan bentuk lahan yang dihasilkan.",
-    hero: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1485470733090-0aae1788d5af?w=600&q=80", cap: "Delta sungai — sedimentasi fluvial" },
-      { src: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=80", cap: "Gumuk pasir (sand dune) — sedimentasi eolian" },
-      { src: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=600&q=80", cap: "Pantai pasir — sedimentasi marin" },
-    ],
     content: `
       <div class="card">
-        <h3><span>💧</span> Sedimentasi oleh Tenaga Air (Fluvial)</h3>
+        <h3><span class="icon">💧</span> Sedimentasi oleh Tenaga Air (Fluvial)</h3>
         <p>Material dibawa aliran sungai lalu diendapkan ketika arus melambat.</p>
         <div class="pill-list">
           <span class="pill blue">Delta sungai</span>
@@ -859,7 +690,7 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>🌬️</span> Sedimentasi oleh Tenaga Angin (Eolian)</h3>
+        <h3><span class="icon">🌬️</span> Sedimentasi oleh Tenaga Angin (Eolian)</h3>
         <p>Angin mengangkut partikel pasir atau debu halus dan mengendapkannya di tempat lain.</p>
         <div class="pill-list">
           <span class="pill">Gumuk pasir (sand dune)</span>
@@ -869,7 +700,7 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>🌊</span> Sedimentasi oleh Tenaga Laut (Marine)</h3>
+        <h3><span class="icon">🌊</span> Sedimentasi oleh Tenaga Laut (Marine)</h3>
         <p>Gelombang, arus, dan pasang surut laut mengangkut dan mengendapkan material di pesisir.</p>
         <div class="pill-list">
           <span class="pill blue">Pantai (beach)</span>
@@ -879,23 +710,17 @@ const topics = [
           <span class="pill blue">Gosong (sandbar)</span>
           <span class="pill blue">Terumbu karang (reef)</span>
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 10,
     title: "Lapisan Atmosfer",
     theme: "theme-atmosfer",
-    tclass: "t-atmosfer",
-    badge: "🌤️ Atmosfer",
     subtitle: "Komposisi gas dan karakteristik menarik dari setiap lapisan atmosfer bumi.",
-    hero: "https://images.unsplash.com/photo-1504608524841-42584120d693?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?w=600&q=80", cap: "Troposfer — tempat semua cuaca terjadi" },
-      { src: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600&q=80", cap: "Aurora borealis di termosfer (80–500 km)" },
-    ],
     content: `
       <div class="card">
-        <h3><span>🌡️</span> Komposisi Gas Atmosfer</h3>
+        <h3><span class="icon">🌡️</span> Komposisi Gas Atmosfer</h3>
         <div class="pill-list">
           <span class="pill green">Nitrogen (N₂) – 78%</span>
           <span class="pill blue">Oksigen (O₂) – 21%</span>
@@ -905,64 +730,50 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>🔵</span> Lapisan Atmosfer & Ciri Khasnya</h3>
+        <h3><span class="icon">🔵</span> Lapisan Atmosfer & Ciri Khasnya</h3>
         <table class="compare-table">
           <tr><th>Lapisan</th><th>Ketinggian</th><th>Hal Menarik / Fungsi</th></tr>
           <tr><td><strong>Troposfer</strong></td><td>0 – 12 km</td><td>Tempat semua cuaca terjadi (awan, hujan, angin). Suhu turun 0,6°C setiap naik 100m. Ada tropopause di batas atasnya.</td></tr>
           <tr><td><strong>Stratosfer</strong></td><td>12 – 50 km</td><td>Terdapat lapisan ozon (O₃) yang menyerap UV berbahaya. Suhu naik seiring ketinggian. Jalur penerbangan pesawat jet.</td></tr>
-          <tr><td><strong>Mesosfer</strong></td><td>50 – 80 km</td><td>Tempat meteor terbakar (bintang jatuh). Suhu paling dingin (−100°C). Ada mesopause.</td></tr>
+          <tr><td><strong>Mesosfer</strong></td><td>50 – 80 km</td><td>Lapisan terpanjang. Tempat meteor terbakar (bintang jatuh). Suhu paling dingin (−100°C). Ada mesopause.</td></tr>
           <tr><td><strong>Termosfer</strong></td><td>80 – 500 km</td><td>Suhu sangat tinggi (1.500°C+). Terjadi aurora borealis/australis. Stasiun Luar Angkasa (ISS) berada di sini. Terdapat ionosfer (memantulkan gelombang radio).</td></tr>
           <tr><td><strong>Eksosfer</strong></td><td>&gt; 500 km</td><td>Lapisan terluar, menyatu dengan ruang angkasa. Atom-atom sangat jarang. Satelit buatan mengorbit di sini.</td></tr>
         </table>
-      </div>`
+      </div>
+    `
   },
   {
     id: 11,
     title: "Fenomena di Atmosfer",
     theme: "theme-atmosfer",
-    tclass: "t-atmosfer",
-    badge: "🌤️ Atmosfer",
     subtitle: "Awan, pelangi, aurora, dan halo — proses fisika di balik fenomena alam.",
-    hero: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1431440869543-efaf3388c585?w=600&q=80", cap: "Pelangi — pembiasan & dispersi cahaya matahari" },
-      { src: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&q=80", cap: "Aurora — partikel matahari di termosfer" },
-      { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", cap: "Halo matahari — pembiasan lewat kristal es" },
-    ],
     content: `
       <div class="card">
-        <h3><span>🌈</span> Pelangi</h3>
+        <h3><span class="icon">🌈</span> Pelangi</h3>
         <p>Terbentuk akibat <strong>pembiasan, pemantulan, dan dispersi cahaya matahari</strong> oleh tetesan air di atmosfer. Muncul ketika matahari di belakang pengamat dan hujan di depan. Warna: Merah-Jingga-Kuning-Hijau-Biru-Nila-Ungu (MEJIKUHIBINIU).</p>
       </div>
       <div class="card">
-        <h3><span>🌌</span> Aurora</h3>
+        <h3><span class="icon">🌌</span> Aurora</h3>
         <p>Fenomena cahaya di langit kutub (aurora borealis di utara, aurora australis di selatan). Terbentuk saat partikel bermuatan dari angin matahari (solar wind) masuk atmosfer melalui medan magnet bumi, lalu bertumbukan dengan gas di termosfer dan menghasilkan cahaya berwarna-warni.</p>
       </div>
       <div class="card">
-        <h3><span>🌤️</span> Halo</h3>
+        <h3><span class="icon">🌤️</span> Halo</h3>
         <p>Lingkaran cahaya berbentuk cincin di sekitar matahari atau bulan. Terbentuk akibat <strong>pembiasan cahaya melalui kristal es</strong> yang ada di awan cirrus (tipis, tinggi). Halo matahari = halo siang; Halo bulan = halo malam.</p>
       </div>
       <div class="card">
-        <h3><span>☁️</span> Awan</h3>
-        <p>Kumpulan tetesan air atau kristal es yang melayang di atmosfer. Terbentuk melalui kondensasi uap air saat udara naik dan mendingin hingga mencapai titik embun. Berdasarkan ketinggian: awan tinggi, sedang, dan rendah (lihat topik 12).</p>
-      </div>`
+        <h3><span class="icon">☁️</span> Awan</h3>
+        <p>Kumpulan tetesan air atau kristal es yang melayang di atmosfer. Terbentuk melalui kondensasi uap air saat udara naik dan mendingin hingga mencapai titik embun. Berdasarkan ketinggian: awan tinggi, sedang, dan rendah (dibahas di topik 12).</p>
+      </div>
+    `
   },
   {
     id: 12,
     title: "Klasifikasi Awan",
     theme: "theme-atmosfer",
-    tclass: "t-atmosfer",
-    badge: "🌤️ Atmosfer",
     subtitle: "Awan tinggi, sedang, dan rendah — contoh dan ciri-cirinya.",
-    hero: "https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=600&q=80", cap: "Cirrus — awan tinggi seperti bulu halus" },
-      { src: "https://images.unsplash.com/photo-1558979158-65a1eaa08691?w=600&q=80", cap: "Cumulonimbus — awan vertikal penghasil petir" },
-      { src: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=80", cap: "Stratus — awan rendah seperti kabut" },
-    ],
     content: `
       <div class="card">
-        <h3><span>☁️</span> Awan Tinggi (&gt;6.000 m)</h3>
+        <h3><span class="icon">☁️</span> Awan Tinggi (&gt;6.000 m)</h3>
         <p>Tersusun dari kristal es. Tipis dan transparan.</p>
         <div class="pill-list">
           <span class="pill">Cirrus (Ci) – helaian tipis seperti bulu</span>
@@ -971,7 +782,8 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>⛅</span> Awan Sedang (2.000 – 6.000 m)</h3>
+        <h3><span class="icon">⛅</span> Awan Sedang (2.000 – 6.000 m)</h3>
+        <p>Tersusun dari tetesan air, kadang kristal es.</p>
         <div class="def-list">
           <div class="def-item">
             <div class="def-term">Altocumulus (Ac)</div>
@@ -984,36 +796,45 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>🌧️</span> Awan Rendah (&lt;2.000 m)</h3>
+        <h3><span class="icon">🌧️</span> Awan Rendah (&lt;2.000 m)</h3>
         <div class="def-list">
-          <div class="def-item"><div class="def-term">Nimbostratus (Ns)</div><div class="def-desc">Awan gelap tebal yang menyebabkan hujan deras berkelanjutan atau salju. Menutupi seluruh langit.</div></div>
-          <div class="def-item"><div class="def-term">Stratus (St)</div><div class="def-desc">Lapisan mendatar tipis, menyebabkan kabut atau gerimis. Seperti kabut tapi lebih tinggi.</div></div>
-          <div class="def-item"><div class="def-term">Stratocumulus (Sc)</div><div class="def-desc">Gumpalan besar abu-abu, umum dijumpai, jarang menyebabkan hujan lebat.</div></div>
+          <div class="def-item">
+            <div class="def-term">Nimbostratus (Ns)</div>
+            <div class="def-desc">Awan gelap tebal yang menyebabkan hujan deras berkelanjutan atau salju. Menutupi seluruh langit.</div>
+          </div>
+          <div class="def-item">
+            <div class="def-term">Stratus (St)</div>
+            <div class="def-desc">Lapisan mendatar tipis, menyebabkan kabut atau gerimis. Seperti kabut tapi lebih tinggi.</div>
+          </div>
+          <div class="def-item">
+            <div class="def-term">Stratocumulus (Sc)</div>
+            <div class="def-desc">Gumpalan besar abu-abu, umum dijumpai, jarang menyebabkan hujan lebat.</div>
+          </div>
         </div>
       </div>
       <div class="card">
-        <h3><span>⛈️</span> Awan Vertikal (semua ketinggian)</h3>
+        <h3><span class="icon">⛈️</span> Awan Vertikal (semua ketinggian)</h3>
         <div class="def-list">
-          <div class="def-item"><div class="def-term">Cumulonimbus (Cb)</div><div class="def-desc">Awan paling besar dan kuat, menjulang dari rendah sampai tinggi (bisa 12–16 km). Menyebabkan hujan lebat, petir, kilat, hujan es, dan tornado. Bentuknya seperti "anvil" (landasan besi) di bagian atas.</div></div>
-          <div class="def-item"><div class="def-term">Cumulus (Cu)</div><div class="def-desc">Gumpalan putih berbentuk seperti kapas, puncak menonjol. Awan cuaca cerah, bisa berkembang menjadi cumulonimbus.</div></div>
+          <div class="def-item">
+            <div class="def-term">Cumulonimbus (Cb)</div>
+            <div class="def-desc">Awan paling besar dan kuat, menjulang dari rendah sampai tinggi (bisa 12–16 km). Menyebabkan hujan lebat, petir, kilat, hujan es, dan tornado. Bentuknya seperti "anvil" (landasan besi) di bagian atas.</div>
+          </div>
+          <div class="def-item">
+            <div class="def-term">Cumulus (Cu)</div>
+            <div class="def-desc">Gumpalan putih berbentuk seperti kapas, puncak menonjol. Awan cuaca cerah, bisa berkembang menjadi cumulonimbus.</div>
+          </div>
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 13,
     title: "Perbedaan Iklim & Cuaca",
     theme: "theme-atmosfer",
-    tclass: "t-atmosfer",
-    badge: "🌤️ Atmosfer",
     subtitle: "Klasifikasi iklim Matahari, Köppen, Schmit Ferguson, dan Junghun.",
-    hero: "https://images.unsplash.com/photo-1474122637940-7dc09a2b7bea?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=600&q=80", cap: "Iklim tropis — hujan sepanjang tahun" },
-      { src: "https://images.unsplash.com/photo-1477595159552-082b4e91f2ae?w=600&q=80", cap: "Iklim subpolar — suhu ekstrem, vegetasi tundra" },
-    ],
     content: `
       <div class="card">
-        <h3><span>⏱️</span> Cuaca vs Iklim</h3>
+        <h3><span class="icon">⏱️</span> Cuaca vs Iklim</h3>
         <table class="compare-table">
           <tr><th>Aspek</th><th>Cuaca</th><th>Iklim</th></tr>
           <tr><td>Waktu</td><td>Jangka pendek (harian/jam)</td><td>Jangka panjang (30+ tahun)</td></tr>
@@ -1023,7 +844,7 @@ const topics = [
         </table>
       </div>
       <div class="card">
-        <h3><span>☀️</span> Iklim Matahari (Berdasarkan Lintang)</h3>
+        <h3><span class="icon">☀️</span> Iklim Matahari (Berdasarkan Lintang)</h3>
         <table class="compare-table">
           <tr><th>Zona</th><th>Lintang</th><th>Ciri</th></tr>
           <tr><td>Tropis</td><td>0° – 23,5° LU/LS</td><td>Panas sepanjang tahun, banyak hujan</td></tr>
@@ -1033,17 +854,31 @@ const topics = [
         </table>
       </div>
       <div class="card">
-        <h3><span>🗺️</span> Iklim Köppen (Berdasarkan Vegetasi & Curah Hujan)</h3>
+        <h3><span class="icon">🗺️</span> Iklim Köppen (Berdasarkan Vegetasi & Curah Hujan)</h3>
         <div class="pill-list">
           <span class="pill green">A – Iklim Tropis (hutan hujan, savana, monsun)</span>
-          <span class="pill amber">B – Iklim Kering/Arid (gurun, stepa)</span>
+          <span class="pill">B – Iklim Kering/Arid (gurun, stepa)</span>
           <span class="pill blue">C – Iklim Sedang Lembap (mediterania, humid)</span>
           <span class="pill">D – Iklim Kontinental (salju, humid)</span>
           <span class="pill">E – Iklim Kutub (tundra, es)</span>
         </div>
       </div>
       <div class="card">
-        <h3><span>🏔️</span> Iklim Junghun (Berdasarkan Ketinggian – daerah tropis)</h3>
+        <h3><span class="icon">🌧️</span> Iklim Schmit Ferguson (Q = Bulan Kering/Bulan Basah)</h3>
+        <p>Berdasarkan perbandingan <strong>rata-rata bulan kering</strong> (curah hujan &lt;60mm) dibagi <strong>rata-rata bulan basah</strong> (curah hujan &gt;100mm), lalu dikalikan 100 = nilai Q.</p>
+        <div class="pill-list">
+          <span class="pill green">A: Q &lt; 14,3% (sangat basah)</span>
+          <span class="pill green">B: Q 14,3–33,3%</span>
+          <span class="pill blue">C: Q 33,3–60%</span>
+          <span class="pill blue">D: Q 60–100%</span>
+          <span class="pill">E: Q 100–167%</span>
+          <span class="pill red">F: Q 167–300%</span>
+          <span class="pill red">G: Q 300–700%</span>
+          <span class="pill red">H: Q &gt;700% (sangat kering)</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3><span class="icon">🏔️</span> Iklim Junghun (Berdasarkan Ketinggian – khusus daerah tropis)</h3>
         <table class="compare-table">
           <tr><th>Zona</th><th>Ketinggian</th><th>Suhu</th><th>Tanaman</th></tr>
           <tr><td>Panas</td><td>0 – 600 m</td><td>26,3°C – 22°C</td><td>Padi, jagung, tebu, karet</td></tr>
@@ -1051,23 +886,17 @@ const topics = [
           <tr><td>Sejuk</td><td>1.500 – 2.500 m</td><td>17,1°C – 11,1°C</td><td>Teh, kina, cemara</td></tr>
           <tr><td>Dingin</td><td>&gt; 2.500 m</td><td>&lt; 11,1°C</td><td>Lumut, vegetasi alpine</td></tr>
         </table>
-      </div>`
+      </div>
+    `
   },
   {
     id: 14,
     title: "Jenis Hujan",
     theme: "theme-atmosfer",
-    tclass: "t-atmosfer",
-    badge: "🌤️ Atmosfer",
     subtitle: "Hujan orografis, zenital, dan konveksi — proses terbentuknya.",
-    hero: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1557425955-df376b5903c8?w=600&q=80", cap: "Hujan orografis — udara naik meloncati pegunungan" },
-      { src: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80", cap: "Hujan zenital — konveksi termal daerah tropis" },
-    ],
     content: `
       <div class="card">
-        <h3><span>🌧️</span> Jenis-Jenis Hujan</h3>
+        <h3><span class="icon">🌧️</span> Jenis-Jenis Hujan</h3>
         <div class="def-list">
           <div class="def-item">
             <div class="def-term">🏔️ Hujan Orografis (Relief)</div>
@@ -1084,7 +913,7 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>📐</span> Perbedaan Orografis vs Zenital</h3>
+        <h3><span class="icon">📐</span> Perbedaan Orografis vs Zenital</h3>
         <table class="compare-table">
           <tr><th>Aspek</th><th>Orografis</th><th>Zenital</th></tr>
           <tr><td>Penyebab</td><td>Pegunungan/topografi</td><td>Pemanasan permukaan (matahari)</td></tr>
@@ -1092,50 +921,62 @@ const topics = [
           <tr><td>Lokasi</td><td>Dekat pegunungan</td><td>Daerah tropis, siang/sore</td></tr>
           <tr><td>Waktu</td><td>Tidak tentu</td><td>Sore hari (puncak pemanasan)</td></tr>
         </table>
-      </div>`
+      </div>
+    `
   },
   {
     id: 15,
-    title: "Istilah-Istilah dalam Siklus Hidrologi",
+    title: "Istilah-Istilah Hujan",
     theme: "theme-atmosfer",
-    tclass: "t-atmosfer",
-    badge: "🌤️ Atmosfer",
     subtitle: "Presipitasi, evaporasi, evapotranspirasi, kondensasi, adveksi, run-off.",
-    hero: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=600&q=80", cap: "Evaporasi — penguapan air dari permukaan laut" },
-      { src: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=600&q=80", cap: "Presipitasi — segala bentuk jatuhnya air dari atmosfer" },
-    ],
     content: `
       <div class="card">
-        <h3><span>🔄</span> Siklus Hidrologi & Istilahnya</h3>
+        <h3><span class="icon">🔄</span> Siklus Hidrologi & Istilahnya</h3>
         <div class="def-list">
-          <div class="def-item"><div class="def-term">Presipitasi</div><div class="def-desc">Segala bentuk jatuhnya air dari atmosfer ke permukaan bumi, termasuk hujan, salju, hujan es, embun beku, dan kabut.</div></div>
-          <div class="def-item"><div class="def-term">Evaporasi</div><div class="def-desc">Penguapan air dari permukaan air (laut, danau, sungai, dll.) menjadi uap air di atmosfer akibat panas matahari.</div></div>
-          <div class="def-item"><div class="def-term">Evapotranspirasi</div><div class="def-desc">Gabungan evaporasi + transpirasi (penguapan melalui daun tanaman). Total kehilangan air dari permukaan bumi ke atmosfer.</div></div>
-          <div class="def-item"><div class="def-term">Kondensasi</div><div class="def-desc">Proses berubahnya uap air menjadi tetesan air cair saat udara mendingin di bawah titik embun (dew point). Menghasilkan awan, embun, kabut.</div></div>
-          <div class="def-item"><div class="def-term">Adveksi</div><div class="def-desc">Pergerakan horizontal massa udara atau air yang membawa panas/uap air dari satu tempat ke tempat lain. Berbeda dengan konveksi (vertikal).</div></div>
-          <div class="def-item"><div class="def-term">Run-off (Limpasan)</div><div class="def-desc">Air hujan yang mengalir di atas permukaan tanah (tidak meresap) menuju sungai, danau, atau laut. Dipengaruhi: kemiringan, permeabilitas tanah, vegetasi, curah hujan.</div></div>
-          <div class="def-item"><div class="def-term">Infiltrasi</div><div class="def-desc">Air hujan yang meresap masuk ke dalam tanah menjadi air tanah.</div></div>
-          <div class="def-item"><div class="def-term">Transpirasi</div><div class="def-desc">Penguapan air melalui stomata (pori-pori) daun tanaman.</div></div>
+          <div class="def-item">
+            <div class="def-term">Presipitasi</div>
+            <div class="def-desc">Segala bentuk jatuhnya air dari atmosfer ke permukaan bumi, termasuk hujan, salju, hujan es, embun beku, dan kabut.</div>
+          </div>
+          <div class="def-item">
+            <div class="def-term">Evaporasi</div>
+            <div class="def-desc">Penguapan air dari permukaan air (laut, danau, sungai, dll.) menjadi uap air di atmosfer akibat panas matahari.</div>
+          </div>
+          <div class="def-item">
+            <div class="def-term">Evapotranspirasi</div>
+            <div class="def-desc">Gabungan evaporasi + transpirasi (penguapan melalui daun tanaman). Total kehilangan air dari permukaan bumi ke atmosfer.</div>
+          </div>
+          <div class="def-item">
+            <div class="def-term">Kondensasi</div>
+            <div class="def-desc">Proses berubahnya uap air menjadi tetesan air cair saat udara mendingin di bawah titik embun (dew point). Menghasilkan awan, embun, kabut.</div>
+          </div>
+          <div class="def-item">
+            <div class="def-term">Adveksi</div>
+            <div class="def-desc">Pergerakan horizontal massa udara atau air yang membawa panas/uap air dari satu tempat ke tempat lain. Berbeda dengan konveksi (vertikal).</div>
+          </div>
+          <div class="def-item">
+            <div class="def-term">Run-off (Limpasan)</div>
+            <div class="def-desc">Air hujan yang mengalir di atas permukaan tanah (tidak meresap) menuju sungai, danau, atau laut. Banyak faktor: kemiringan, permeabilitas tanah, vegetasi, curah hujan.</div>
+          </div>
+          <div class="def-item">
+            <div class="def-term">Infiltrasi</div>
+            <div class="def-desc">Air hujan yang meresap masuk ke dalam tanah menjadi air tanah.</div>
+          </div>
+          <div class="def-item">
+            <div class="def-term">Transpirasi</div>
+            <div class="def-desc">Penguapan air melalui stomata (pori-pori) daun tanaman.</div>
+          </div>
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 16,
     title: "Air Tanah: Freatis, Artesis, Meteorik",
     theme: "theme-hidrosfer",
-    tclass: "t-hidrosfer",
-    badge: "💧 Hidrosfer",
     subtitle: "Jenis-jenis air tanah berdasarkan letak dan asal-usulnya.",
-    hero: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80", cap: "Sumur artesis — air tanah bertekanan menyembur" },
-      { src: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80", cap: "Mata air panas — air tanah juvenile (magmatik)" },
-    ],
     content: `
       <div class="card">
-        <h3><span>💧</span> Jenis Air Tanah</h3>
+        <h3><span class="icon">💧</span> Jenis Air Tanah</h3>
         <div class="def-list">
           <div class="def-item">
             <div class="def-term">Air Tanah Freatis (Air Tanah Dangkal)</div>
@@ -1158,24 +999,17 @@ const topics = [
             <div class="def-desc">Air yang terperangkap di dalam lapisan batuan sejak batuan tersebut terbentuk (ribuan/jutaan tahun lalu). Sering terdapat di lapisan batuan sedimen kuno.</div>
           </div>
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 17,
-    title: "Bagian Sungai: Hulu, Tengah & Hilir",
+    title: "Bagian Sungai: Hulu & Hilir",
     theme: "theme-hidrosfer",
-    tclass: "t-hidrosfer",
-    badge: "💧 Hidrosfer",
     subtitle: "Karakteristik hulu, tengah, dan hilir sungai serta badan sungai.",
-    hero: "https://images.unsplash.com/photo-1437914983566-b960a94dfe12?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", cap: "Hulu sungai — aliran deras, lembah berbentuk V" },
-      { src: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600&q=80", cap: "Meander di bagian tengah-hilir sungai" },
-      { src: "https://images.unsplash.com/photo-1483691278019-cb7253bee49f?w=600&q=80", cap: "Delta sungai di hilir — sedimentasi dominan" },
-    ],
     content: `
       <div class="card">
-        <h3><span>🏔️</span> Hulu Sungai</h3>
+        <h3><span class="icon">🏔️</span> Hulu Sungai</h3>
         <p><strong>Lokasi:</strong> Di daerah pegunungan/perbukitan (ketinggian tinggi).</p>
         <div class="pill-list">
           <span class="pill">Lereng curam</span>
@@ -1187,7 +1021,7 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>🌊</span> Tengah Sungai</h3>
+        <h3><span class="icon">🌊</span> Tengah Sungai</h3>
         <p><strong>Lokasi:</strong> Di daerah dataran tinggi-sedang (transisi).</p>
         <div class="pill-list">
           <span class="pill blue">Lereng lebih landai</span>
@@ -1197,7 +1031,7 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>🏙️</span> Hilir Sungai</h3>
+        <h3><span class="icon">🏙️</span> Hilir Sungai</h3>
         <p><strong>Lokasi:</strong> Di daerah dataran rendah hingga pesisir laut.</p>
         <div class="pill-list">
           <span class="pill green">Landai/datar</span>
@@ -1209,31 +1043,25 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>📐</span> Pola Aliran Sungai (DAS)</h3>
+        <h3><span class="icon">📐</span> Badan Sungai (DAS & Pola Aliran)</h3>
         <div class="def-list">
+          <div class="def-item"><div class="def-term">DAS (Daerah Aliran Sungai)</div><div class="def-desc">Kawasan yang airnya mengalir ke satu sungai. Dibatasi oleh punggung bukit (watershed/igir).</div></div>
           <div class="def-item"><div class="def-term">Pola Dendritik</div><div class="def-desc">Seperti cabang pohon. Di daerah datar dengan batuan homogen.</div></div>
           <div class="def-item"><div class="def-term">Pola Radial Sentrifugal</div><div class="def-desc">Menyebar dari satu titik pusat (gunung). Air mengalir ke segala arah menjauhi pusat.</div></div>
           <div class="def-item"><div class="def-term">Pola Radial Sentripetal</div><div class="def-desc">Mengalir menuju satu titik pusat (cekungan/basin).</div></div>
           <div class="def-item"><div class="def-term">Pola Trellis</div><div class="def-desc">Sungai utama dan anak sungai membentuk sudut siku-siku, seperti terali/pagar. Di daerah lipatan/pegunungan paralel.</div></div>
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 18,
     title: "Jenis Danau & Rawa",
     theme: "theme-hidrosfer",
-    tclass: "t-hidrosfer",
-    badge: "💧 Hidrosfer",
     subtitle: "Klasifikasi danau berdasarkan proses (genesa) dan tempat terjadinya.",
-    hero: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80", cap: "Danau Toba — danau tektono-vulkanik terbesar" },
-      { src: "https://images.unsplash.com/photo-1504851149312-7a075b496cc7?w=600&q=80", cap: "Danau kawah vulkanik — air asam berbeda warna" },
-      { src: "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600&q=80", cap: "Rawa gambut di Kalimantan — air hitam, sangat asam" },
-    ],
     content: `
       <div class="card">
-        <h3><span>🏞️</span> Klasifikasi Danau Berdasarkan Proses (Genesa)</h3>
+        <h3><span class="icon">🏞️</span> Klasifikasi Danau Berdasarkan Proses (Genesa)</h3>
         <div class="def-list">
           <div class="def-item"><div class="def-term">Danau Tektonik</div><div class="def-desc">Terbentuk akibat pergerakan lempeng bumi (patahan/graben). Contoh: Danau Poso, Danau Towuti (Sulawesi).</div></div>
           <div class="def-item"><div class="def-term">Danau Vulkanik</div><div class="def-desc">Terbentuk di kawah gunung berapi yang terisi air. Contoh: Danau Kelimutu (NTT), Danau Kawah Ijen.</div></div>
@@ -1245,29 +1073,23 @@ const topics = [
         </div>
       </div>
       <div class="card">
-        <h3><span>🌿</span> Jenis Rawa</h3>
+        <h3><span class="icon">🌿</span> Jenis Rawa</h3>
         <div class="def-list">
           <div class="def-item"><div class="def-term">Rawa Pasang Surut</div><div class="def-desc">Di pantai/muara sungai, dipengaruhi pasang surut air laut. Airnya payau (campuran tawar-asin).</div></div>
           <div class="def-item"><div class="def-term">Rawa Gambut</div><div class="def-desc">Di pedalaman dataran rendah tropis, berisi gambut (sisa tumbuhan terurai sebagian). Airnya sangat asam dan gelap (air hitam). Banyak di Kalimantan & Sumatra.</div></div>
           <div class="def-item"><div class="def-term">Rawa Lebak</div><div class="def-desc">Rawa di belakang tanggul alam sungai, tergenang di musim hujan dan kering di musim kemarau.</div></div>
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 19,
     title: "Zona Laut Berdasarkan Kedalaman",
     theme: "theme-hidrosfer",
-    tclass: "t-hidrosfer",
-    badge: "💧 Hidrosfer",
-    subtitle: "Zona litoral, neritik, batial (abisal), dan hadal.",
-    hero: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1497671954146-59a89ff626ff?w=600&q=80", cap: "Zona neritik (0–200 m) — terumbu karang, kaya ikan" },
-      { src: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", cap: "Zona abisal — gelap total, tekanan ekstrem" },
-    ],
+    subtitle: "Zona litoral, neritik, batial (abisal), dan abissal.",
     content: `
       <div class="card">
-        <h3><span>🌊</span> Zona Laut Berdasarkan Kedalaman</h3>
+        <h3><span class="icon">🌊</span> Zona Laut Berdasarkan Kedalaman</h3>
         <table class="compare-table">
           <tr><th>Zona</th><th>Kedalaman</th><th>Ciri & Organisme</th></tr>
           <tr><td><strong>Litoral (Pasang Surut)</strong></td><td>0 m (antar pasang surut)</td><td>Wilayah antara batas air pasang dan surut. Terpapar udara saat surut. Dihuni: kepiting, kerang, bintang laut, ganggang.</td></tr>
@@ -1278,7 +1100,7 @@ const topics = [
         </table>
       </div>
       <div class="card">
-        <h3><span>☀️</span> Zona Berdasarkan Cahaya</h3>
+        <h3><span class="icon">☀️</span> Zona Berdasarkan Cahaya</h3>
         <div class="two-col">
           <div class="col-box">
             <h4>Zona Fotik</h4>
@@ -1299,132 +1121,84 @@ const topics = [
             </ul>
           </div>
         </div>
-      </div>`
+      </div>
+    `
   },
   {
     id: 20,
     title: "Batas Laut: Teritorial, ZEE, Kontinen",
     theme: "theme-hidrosfer",
-    tclass: "t-hidrosfer",
-    badge: "💧 Hidrosfer",
     subtitle: "Batas-batas laut Indonesia berdasarkan hukum internasional (UNCLOS).",
-    hero: "https://images.unsplash.com/photo-1548678760-e2a71f6d1a3f?w=1200&q=80",
-    photos: [
-      { src: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&q=80", cap: "Perairan kepulauan Indonesia — ZEE ±2,7 juta km²" },
-      { src: "https://images.unsplash.com/photo-1569880153113-76161c3a8d64?w=600&q=80", cap: "Hak eksklusif ZEE 200 mil laut dari garis pantai" },
-    ],
     content: `
       <div class="card">
-        <h3><span>⚓</span> Batas Laut Internasional (UNCLOS 1982)</h3>
+        <h3><span class="icon">⚓</span> Batas Laut Internasional (UNCLOS 1982)</h3>
         <table class="compare-table">
           <tr><th>Jenis</th><th>Jarak dari Garis Pantai</th><th>Hak Negara</th></tr>
           <tr><td><strong>Laut Teritorial</strong></td><td>12 mil laut (22,2 km)</td><td>Kedaulatan penuh (setara daratan). Kapal asing boleh lewat (innocent passage) tanpa izin.</td></tr>
-          <tr><td><strong>Zona Tambahan</strong></td><td>24 mil laut</td><td>Hak pengawasan terbatas (bea cukai, imigrasi, polusi).</td></tr>
+          <tr><td><strong>Zona Tambahan (Contiguous Zone)</strong></td><td>24 mil laut</td><td>Hak pengawasan terbatas (bea cukai, imigrasi, polusi).</td></tr>
           <tr><td><strong>ZEE (Zona Ekonomi Eksklusif)</strong></td><td>200 mil laut (370 km)</td><td>Hak eksklusif eksplorasi & eksploitasi SDA (ikan, minyak, gas, mineral). Negara lain boleh melintas bebas.</td></tr>
-          <tr><td><strong>Landas Kontinen</strong></td><td>Max 350 mil laut</td><td>Hak eksplorasi & eksploitasi SDA di dasar laut dan bawah tanah laut.</td></tr>
+          <tr><td><strong>Landas Kontinen</strong></td><td>Max 350 mil laut (atau 100 mil dari isobath 2.500 m)</td><td>Hak eksplorasi & eksploitasi SDA di dasar laut dan bawah tanah laut.</td></tr>
           <tr><td><strong>Laut Bebas (High Seas)</strong></td><td>&gt; 200 mil laut</td><td>Bebas untuk semua negara, tidak ada kedaulatan.</td></tr>
         </table>
       </div>
       <div class="card">
-        <h3><span>🇮🇩</span> Wilayah Laut Indonesia</h3>
+        <h3><span class="icon">🇮🇩</span> Wilayah Laut Indonesia</h3>
         <p>Indonesia memiliki ZEE terluas ke-6 di dunia ± <strong>2,7 juta km²</strong> dan garis pantai terpanjang ke-2 di dunia ± <strong>99.093 km</strong>.</p>
         <div class="highlight">
           <strong>Deklarasi Djuanda (1957):</strong> Menyatakan bahwa perairan di antara pulau-pulau Indonesia adalah bagian dari wilayah NKRI (perairan kepulauan). Ini menjadi dasar konsep <em>Wawasan Nusantara</em> dan diakui UNCLOS 1982 sebagai Negara Kepulauan (Archipelagic State).
         </div>
-      </div>`
+      </div>
+    `
   }
 ];
 
-/* ── GROUP NAV BY THEME ──────────────────────────────── */
-const groups = [
-  { label: "🪨 Litosfer", cls: "t-litosfer", ids: [1,2,3,4,8] },
-  { label: "🌋 Vulkanisme", cls: "t-vulkan",   ids: [5,6,7] },
-  { label: "🌤️ Atmosfer",  cls: "t-atmosfer",  ids: [10,11,12,13,14,15] },
-  { label: "💧 Hidrosfer", cls: "t-hidrosfer",  ids: [9,16,17,18,19,20] },
-];
-
+// Render nav
 const navLinks = document.getElementById('nav-links');
-const pagesEl  = document.getElementById('pages');
-
-const topicMap = {};
-topics.forEach(t => topicMap[t.id] = t);
-
-// Build nav
-groups.forEach(g => {
-  const lbl = document.createElement('div');
-  lbl.className = 'section-label';
-  lbl.textContent = g.label;
-  navLinks.appendChild(lbl);
-
-  g.ids.forEach(id => {
-    const t = topicMap[id];
-    if (!t) return;
-    const el = document.createElement('div');
-    el.className = `nav-item ${g.cls}`;
-    el.id = `nav-${id}`;
-    el.innerHTML = `<span class="nav-num">${id}</span><span>${t.title}</span>`;
-    el.onclick = () => showPage(id);
-    navLinks.appendChild(el);
-  });
+topics.forEach((t, i) => {
+  const el = document.createElement('div');
+  el.className = 'nav-item' + (i === 0 ? ' active' : '');
+  el.innerHTML = `<span class="nav-num">${t.id}</span><span>${t.title}</span>`;
+  el.onclick = () => showPage(i);
+  navLinks.appendChild(el);
 });
 
-// Build pages
-const orderedIds = topics.map(t => t.id);
-
-topics.forEach((t, idx) => {
+// Render pages
+const pagesEl = document.getElementById('pages');
+topics.forEach((t, i) => {
   const div = document.createElement('div');
-  div.className = `page ${t.theme}`;
-  div.id = `page-${t.id}`;
-
-  const cols = t.photos.length === 2 ? 'cols-2' : 'cols-3';
-  const photoHTML = t.photos.map(p => `
-    <figure class="photo-box">
-      <img src="${p.src}" alt="${p.cap}" loading="lazy">
-      <figcaption>${p.cap}</figcaption>
-    </figure>`).join('');
-
-  const prevId = idx > 0 ? topics[idx - 1].id : null;
-  const nextId = idx < topics.length - 1 ? topics[idx + 1].id : null;
-
+  div.className = 'page ' + t.theme + (i === 0 ? ' active' : '');
+  div.id = 'page-' + i;
   div.innerHTML = `
-    <div class="hero">
-      <img class="hero-img" src="${t.hero}" alt="${t.title}">
-      <div class="hero-overlay">
-        <div class="hero-badge">${t.badge} &nbsp;· Topik ${t.id} dari ${topics.length}</div>
-        <h1>${t.title}</h1>
-        <p>${t.subtitle}</p>
-      </div>
+    <div class="page-header">
+      <div class="topic-num">Topik ${t.id} dari ${topics.length}</div>
+      <h1>${t.title}</h1>
+      <p class="subtitle">${t.subtitle}</p>
     </div>
-    <div class="page-content">
-      <div class="photo-strip ${cols}">${photoHTML}</div>
-      ${t.content}
-    </div>
+    <div class="page-content">${t.content}</div>
     <div class="nav-buttons">
-      ${prevId ? `<button class="btn btn-prev" onclick="showPage(${prevId})">← Sebelumnya</button>` : ''}
-      ${nextId ? `<button class="btn btn-next" onclick="showPage(${nextId})">Berikutnya →</button>` : `<button class="btn btn-next" style="background:#27AE60;cursor:default">✓ Selesai!</button>`}
-      <span class="page-counter">${idx + 1} / ${topics.length}</span>
+      ${i > 0 ? `<button class="btn btn-prev" onclick="showPage(${i-1})">← Sebelumnya</button>` : ''}
+      ${i < topics.length-1 ? `<button class="btn btn-next" onclick="showPage(${i+1})">Berikutnya →</button>` : '<button class="btn btn-next" style="background:#888;cursor:default">Selesai ✓</button>'}
+      <span class="page-counter">${i+1} / ${topics.length}</span>
     </div>
   `;
   pagesEl.appendChild(div);
 });
 
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const page = document.getElementById(`page-${id}`);
-  const nav  = document.getElementById(`nav-${id}`);
-  if (page) page.classList.add('active');
-  if (nav) nav.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  document.getElementById('sidebar').classList.remove('open');
+function showPage(index) {
+  document.querySelectorAll('.page').forEach((p, i) => {
+    p.classList.toggle('active', i === index);
+  });
+  document.querySelectorAll('.nav-item').forEach((n, i) => {
+    n.classList.toggle('active', i === index);
+  });
+  window.scrollTo(0, 0);
+  // Close nav on mobile
+  document.getElementById('nav-panel').classList.remove('open');
 }
 
 function toggleNav() {
-  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('nav-panel').classList.toggle('open');
 }
-
-// Show first topic by default
-showPage(topics[0].id);
 </script>
 </body>
 </html>
